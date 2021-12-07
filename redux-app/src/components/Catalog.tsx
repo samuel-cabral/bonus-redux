@@ -26,7 +26,13 @@ const Catalog: React.FC = () => {
       {catalog.map((product) => (
         <article key={product.id}>
           <strong>{product.title}</strong> {' - '}
-          <span>{product.price}</span>
+          <span>
+            {new Intl.NumberFormat('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            }).format(product.price)}
+          </span>
+          {'  '}
           <button type="button" onClick={() => handleAddProductToCart(product)}>
             Comprar
           </button>
